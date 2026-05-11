@@ -22,7 +22,7 @@ class digitmodel(nn.Module):
 model=digitmodel().to(device)
 loss_fn=nn.CrossEntropyLoss()
 optimizer=opt.Adam(model.parameters(),lr=0.001)
-epochs=100
+epochs=10
 for epoch in range (epochs):
     model.train()
     total_loss=0
@@ -51,7 +51,7 @@ accuracy=100*correct/total
 print(f"total accuracy : {accuracy:.2f}%")
 torch.save(model.state_dict(),"minst_model.pth")
 print("model saved as  minst_model.pth")
-index=6
+index=int(input("enter the index of the image of the number :"))
 image,true_label=test_data[index]
 plt.imshow(image.squeeze(),cmap="gray")
 plt.title(f"actual label : {true_label}")
